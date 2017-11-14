@@ -15,8 +15,8 @@ class Linea{
     
     
     init(num:String, nom:String, id:String) {
-        self.numero=num
-        self.nombre=nom
-        self.identificador=id
+        self.numero = num
+        self.nombre = nom
+        self.identificador = id
     }
 }

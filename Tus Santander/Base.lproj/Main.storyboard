@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Lineas Table View Controller-->
         <scene sceneID="fZG-Up-GYM">
             <objects>
-                <tableViewController id="AYC-PX-nyr" sceneMemberID="viewController">
+                <tableViewController id="AYC-PX-nyr" customClass="LineasTableViewController" customModule="Tus_Santander" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GbW-lF-JvT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nombreLabel" destination="AeA-Xg-ELc" id="7eP-ww-F0Q"/>
-                                    <outlet property="numeroLabel" destination="AeA-Xg-ELc" id="A5Q-wB-toB"/>
+                                    <outlet property="numeroLabel" destination="hKp-tR-4Il" id="gzX-p9-zdd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

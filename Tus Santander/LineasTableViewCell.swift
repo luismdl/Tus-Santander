@@ -11,6 +11,7 @@ import UIKit
 class LineasTableViewCell: UITableViewCell {
     //MARK: Properties
 
+    
     @IBOutlet weak var numeroLabel: UILabel!
     @IBOutlet weak var nombreLabel: UILabel!
     
