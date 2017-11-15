@@ -8,13 +8,22 @@
 
 import Foundation
 
-class Linea{
+class Linea: Comparable{
+    
+    static func <(lhs: Linea, rhs: Linea) -> Bool {
+        return lhs.identificador<rhs.identificador
+    }
+    
+    static func ==(lhs: Linea, rhs: Linea) -> Bool {
+        return lhs.identificador==rhs.identificador
+    }
+    
     var numero: String
     var nombre: String
-    var identificador: String
+    var identificador: Int
     
     
-    init(num:String, nom:String, id:String) {
+    init(num:String, nom:String, id:Int) {
         self.numero = num
         self.nombre = nom
         self.identificador = id

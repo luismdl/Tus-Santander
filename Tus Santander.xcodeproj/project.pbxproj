@@ -16,6 +16,10 @@
 		A0AE195E1FBB466900F6C77E /* Tus_SantanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE195D1FBB466900F6C77E /* Tus_SantanderTests.swift */; };
 		A0AE19691FBB466900F6C77E /* Tus_SantanderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE19681FBB466900F6C77E /* Tus_SantanderUITests.swift */; };
 		A0AE19791FBB4BD700F6C77E /* LineasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE19781FBB4BD700F6C77E /* LineasTableViewCell.swift */; };
+		A0BDA14F1FBB881200B49DA9 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BDA14E1FBB881200B49DA9 /* libsqlite3.0.tbd */; };
+		A0BDA1511FBB888F00B49DA9 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDA1501FBB888F00B49DA9 /* DatabaseHelper.swift */; };
+		A0CE10D81FBB8456002C46E8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CE10D71FBB8449002C46E8 /* libsqlite3.tbd */; };
+		A0FCE5381FBC36760026F3A7 /* FMDB in Resources */ = {isa = PBXBuildFile; fileRef = A0FCE5371FBC36750026F3A7 /* FMDB */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,11 @@
 		A0AE19681FBB466900F6C77E /* Tus_SantanderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tus_SantanderUITests.swift; sourceTree = "<group>"; };
 		A0AE196A1FBB466900F6C77E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0AE19781FBB4BD700F6C77E /* LineasTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineasTableViewCell.swift; sourceTree = "<group>"; };
+		A0BDA14E1FBB881200B49DA9 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		A0BDA1501FBB888F00B49DA9 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
+		A0CE10D71FBB8449002C46E8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		A0FCE5371FBC36750026F3A7 /* FMDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FMDB; sourceTree = "<group>"; };
+		A0FCE53A1FBC3BA90026F3A7 /* Tus Santander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tus Santander-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BDA14F1FBB881200B49DA9 /* libsqlite3.0.tbd in Frameworks */,
+				A0CE10D81FBB8456002C46E8 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +96,7 @@
 				A0AE195C1FBB466900F6C77E /* Tus SantanderTests */,
 				A0AE19671FBB466900F6C77E /* Tus SantanderUITests */,
 				A0AE19461FBB466800F6C77E /* Products */,
+				A0CE10D61FBB8449002C46E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +113,8 @@
 		A0AE19471FBB466800F6C77E /* Tus Santander */ = {
 			isa = PBXGroup;
 			children = (
+				A0FCE5371FBC36750026F3A7 /* FMDB */,
+				A0BDA1501FBB888F00B49DA9 /* DatabaseHelper.swift */,
 				A0AE19481FBB466800F6C77E /* AppDelegate.swift */,
 				A0AE194C1FBB466800F6C77E /* Main.storyboard */,
 				A0234CF61FBB54BE00CE7A94 /* LineasTableViewController.swift */,
@@ -109,6 +123,7 @@
 				A0AE19511FBB466900F6C77E /* LaunchScreen.storyboard */,
 				A0AE19541FBB466900F6C77E /* Info.plist */,
 				A064AC381FBB51F100380D5A /* Linea.swift */,
+				A0FCE53A1FBC3BA90026F3A7 /* Tus Santander-Bridging-Header.h */,
 			);
 			path = "Tus Santander";
 			sourceTree = "<group>";
@@ -129,6 +144,15 @@
 				A0AE196A1FBB466900F6C77E /* Info.plist */,
 			);
 			path = "Tus SantanderUITests";
+			sourceTree = "<group>";
+		};
+		A0CE10D61FBB8449002C46E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0BDA14E1FBB881200B49DA9 /* libsqlite3.0.tbd */,
+				A0CE10D71FBB8449002C46E8 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0AE19531FBB466900F6C77E /* LaunchScreen.storyboard in Resources */,
+				A0FCE5381FBC36760026F3A7 /* FMDB in Resources */,
 				A0AE19501FBB466800F6C77E /* Assets.xcassets in Resources */,
 				A0AE194E1FBB466800F6C77E /* Main.storyboard in Resources */,
 			);
@@ -266,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0234CF71FBB54BE00CE7A94 /* LineasTableViewController.swift in Sources */,
+				A0BDA1511FBB888F00B49DA9 /* DatabaseHelper.swift in Sources */,
 				A064AC391FBB51F100380D5A /* Linea.swift in Sources */,
 				A0AE19491FBB466800F6C77E /* AppDelegate.swift in Sources */,
 				A0AE19791FBB4BD700F6C77E /* LineasTableViewCell.swift in Sources */,
@@ -440,6 +466,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "LuisMartin.Tus-Santander";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,6 +482,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "LuisMartin.Tus-Santander";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

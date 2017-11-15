@@ -12,22 +12,24 @@ class LineasTableViewController: UITableViewController {
     
     //MARK: Properties
     
-     let URL_LINEAS = "http://datos.santander.es/api/rest/datasets/lineas_bus.json";
+    @IBOutlet var tabla: UITableView!
+    let URL_LINEAS = "http://datos.santander.es/api/rest/datasets/lineas_bus.json";
     
     var lineas = [Linea]()
     private func loadSample(){
-        let l1 = Linea(num: "1",nom: "uno",id: "1")
-        let l2 = Linea(num: "2",nom: "dos",id: "2")
-        let l3 = Linea(num: "3",nom: "tres",id: "2")
-        let l4 = Linea(num: "4",nom: "cuatro",id: "4")
+        let l1 = Linea(num: "1",nom: "uno",id: 1)
+        let l2 = Linea(num: "2",nom: "dos",id: 2)
+        let l3 = Linea(num: "3",nom: "tres",id: 2)
+        let l4 = Linea(num: "4",nom: "cuatro",id: 4)
         
         lineas += [l1,l2,l3,l4]
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         getJsonFromUrl()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -90,11 +92,15 @@ class LineasTableViewController: UITableViewController {
                                 else{
                                     fatalError("puta mierda")
                             }
-                            
-                            self.lineas += [Linea(num: num,nom: nom,id: id)]
+                            let i=(id as NSString).integerValue
+                            self.lineas += [Linea(num: num,nom: nom,id: i)]
                         }
                     }
                 }
+            }
+            DispatchQueue.main.async{
+                self.lineas.sort();
+                self.tabla.reloadData()
             }
         }).resume()
     }
