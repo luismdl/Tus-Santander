@@ -1,35 +1,24 @@
 //
-//  LineasTableViewController.swift
+//  EstimacionesTableViewController.swift
 //  Tus Santander
 //
-//  Created by Luis Martin on 14/11/17.
+//  Created by Luis Martin on 15/11/17.
 //  Copyright © 2017 Luis Martin. All rights reserved.
 //
 
 import UIKit
 
-class LineasTableViewController: UITableViewController {
+class EstimacionesTableViewController: UITableViewController {
     
-    //MARK: Properties
+    let URL_ESTIMACIONES = "http://datos.santander.es/api/rest/datasets/control_flotas_estimaciones.json?items=2000"
     
-    @IBOutlet var tabla: UITableView!
-    let URL_LINEAS = "http://datos.santander.es/api/rest/datasets/lineas_bus.json";
-    
-    var lineas = [Linea]()
-    private func loadSample(){
-        let l1 = Linea(num: "1",nom: "uno",id: 1)
-        let l2 = Linea(num: "2",nom: "dos",id: 2)
-        let l3 = Linea(num: "3",nom: "tres",id: 2)
-        let l4 = Linea(num: "4",nom: "cuatro",id: 4)
-        
-        lineas += [l1,l2,l3,l4]
-    }
-
+    @IBOutlet var estimaciones: UITableView!
+    var para = Parada(num: "", nom: "")
+    var estima = [Estimacion]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getJsonFromUrl()
-        
+
+        getJsonEstimacion()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -49,65 +38,74 @@ class LineasTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lineas.count
+        return estima.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "LineasTableViewCell"
+        let cellIdentifier = "EstimacionTableViewCell"
         
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as?LineasTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EstimacionTableViewCell
             else{
                 fatalError("puta mierda")
         }
-        let linea = lineas[indexPath.row]
+        let estimacion = estima[indexPath.row]
         
-        cell.numeroLabel.text = linea.numero
-        cell.nombreLabel.text = linea.nombre
-
+        cell.linea.text=estimacion.linea
+        cell.bus1.text=String(estimacion.bus1)
+        cell.bus2.text=String(estimacion.bus2)
+        
         return cell
     }
     
-    func getJsonFromUrl(){
-        //creating a NSURL
-        let url = URL(string: URL_LINEAS)
+    func getJsonEstimacion(){
         
-        //fetching the data from the url
+        //creating a NSURL
+        let url = URL(string: URL_ESTIMACIONES)
         URLSession.shared.dataTask(with: (url)!, completionHandler: {(data, response, error) -> Void in
             
             if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
                 
                 //getting the avengers tag array from json and converting it to NSArray
-                if let lineasArray = jsonObj!.value(forKey: "resources") as? NSArray {
+                if let estimaArray = jsonObj!.value(forKey: "resources") as? NSArray {
                     //looping through all the elements
-                    for linea in lineasArray{
+                    for estima in estimaArray{
                         
                         //converting the element to a dictionary
-                        if let lineaDict = linea as? NSDictionary {
+                        if let estimaDict = estima as? NSDictionary {
                             //getting the name from the dictionary
-                            guard let num = lineaDict.value(forKey: "ayto:numero") as? String,
-                            let nom = lineaDict.value(forKey: "dc:name")as? String,
-                            let id = lineaDict.value(forKey: "dc:identifier")as? String
+                            guard let t1 = estimaDict.value(forKey: "ayto:tiempo1")as? String,
+                                let t2 = estimaDict.value(forKey: "ayto:tiempo2")as? String,
+                                let parada = estimaDict.value(forKey: "ayto:paradaId")as? String,
+                                let linea = estimaDict.value(forKey: "ayto:etiqLinea")as? String
                                 else{
                                     fatalError("puta mierda")
                             }
-                            let i=(id as NSString).integerValue
-                            self.lineas += [Linea(num: num,nom: nom,id: i)]
+                            if(self.para.numero==parada){
+                                
+                                var t1i = (t1 as NSString).intValue
+                                t1i = t1i/60
+                                var t2i = (t2 as NSString).intValue
+                                t2i = t2i/60
+                                if(t2i != 0){
+                                    let e = Estimacion(lin: linea, b1: Int(t1i), b2: Int(t2i))
+                                    self.estima += [e]
+                                }
+                                
+                            }
                         }
                     }
                 }
             }
             DispatchQueue.main.async{
-                self.lineas.sort();
-                self.tabla.reloadData()
+                self.estima.sort()
+                self.tableView.reloadData()
             }
         }).resume()
     }
     
-    
-    
-    
+ 
 
     /*
     // Override to support conditional editing of the table view.

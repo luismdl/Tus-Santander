@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A01C72EE1FBC9EAB00D921C5 /* Parada.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C72ED1FBC9EAB00D921C5 /* Parada.swift */; };
+		A01C72F11FBCBA5100D921C5 /* ParadasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C72F01FBCBA5100D921C5 /* ParadasTableViewController.swift */; };
+		A01C72F31FBCBA7D00D921C5 /* ParadaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C72F21FBCBA7D00D921C5 /* ParadaTableViewCell.swift */; };
+		A01C72F61FBCCAB100D921C5 /* EstimacionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C72F51FBCCAB100D921C5 /* EstimacionTableViewCell.swift */; };
+		A01C72F81FBCCAC400D921C5 /* EstimacionesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C72F71FBCCAC400D921C5 /* EstimacionesTableViewController.swift */; };
+		A01C72FA1FBCCC6F00D921C5 /* Estimacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C72F91FBCCC6F00D921C5 /* Estimacion.swift */; };
 		A0234CF71FBB54BE00CE7A94 /* LineasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0234CF61FBB54BE00CE7A94 /* LineasTableViewController.swift */; };
 		A064AC391FBB51F100380D5A /* Linea.swift in Sources */ = {isa = PBXBuildFile; fileRef = A064AC381FBB51F100380D5A /* Linea.swift */; };
 		A0AE19491FBB466800F6C77E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE19481FBB466800F6C77E /* AppDelegate.swift */; };
@@ -16,10 +22,7 @@
 		A0AE195E1FBB466900F6C77E /* Tus_SantanderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE195D1FBB466900F6C77E /* Tus_SantanderTests.swift */; };
 		A0AE19691FBB466900F6C77E /* Tus_SantanderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE19681FBB466900F6C77E /* Tus_SantanderUITests.swift */; };
 		A0AE19791FBB4BD700F6C77E /* LineasTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AE19781FBB4BD700F6C77E /* LineasTableViewCell.swift */; };
-		A0BDA14F1FBB881200B49DA9 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BDA14E1FBB881200B49DA9 /* libsqlite3.0.tbd */; };
 		A0BDA1511FBB888F00B49DA9 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BDA1501FBB888F00B49DA9 /* DatabaseHelper.swift */; };
-		A0CE10D81FBB8456002C46E8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CE10D71FBB8449002C46E8 /* libsqlite3.tbd */; };
-		A0FCE5381FBC36760026F3A7 /* FMDB in Resources */ = {isa = PBXBuildFile; fileRef = A0FCE5371FBC36750026F3A7 /* FMDB */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A01C72ED1FBC9EAB00D921C5 /* Parada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parada.swift; sourceTree = "<group>"; };
+		A01C72F01FBCBA5100D921C5 /* ParadasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParadasTableViewController.swift; sourceTree = "<group>"; };
+		A01C72F21FBCBA7D00D921C5 /* ParadaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParadaTableViewCell.swift; sourceTree = "<group>"; };
+		A01C72F51FBCCAB100D921C5 /* EstimacionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimacionTableViewCell.swift; sourceTree = "<group>"; };
+		A01C72F71FBCCAC400D921C5 /* EstimacionesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimacionesTableViewController.swift; sourceTree = "<group>"; };
+		A01C72F91FBCCC6F00D921C5 /* Estimacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimacion.swift; sourceTree = "<group>"; };
 		A0234CF61FBB54BE00CE7A94 /* LineasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineasTableViewController.swift; sourceTree = "<group>"; };
 		A064AC381FBB51F100380D5A /* Linea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Linea.swift; sourceTree = "<group>"; };
 		A0AE19451FBB466800F6C77E /* Tus Santander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tus Santander.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,8 +67,6 @@
 		A0BDA14E1FBB881200B49DA9 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		A0BDA1501FBB888F00B49DA9 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 		A0CE10D71FBB8449002C46E8 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		A0FCE5371FBC36750026F3A7 /* FMDB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FMDB; sourceTree = "<group>"; };
-		A0FCE53A1FBC3BA90026F3A7 /* Tus Santander-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tus Santander-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0BDA14F1FBB881200B49DA9 /* libsqlite3.0.tbd in Frameworks */,
-				A0CE10D81FBB8456002C46E8 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +94,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A01C72EF1FBC9EB700D921C5 /* pojos */ = {
+			isa = PBXGroup;
+			children = (
+				A064AC381FBB51F100380D5A /* Linea.swift */,
+				A01C72ED1FBC9EAB00D921C5 /* Parada.swift */,
+				A01C72F91FBCCC6F00D921C5 /* Estimacion.swift */,
+			);
+			path = pojos;
+			sourceTree = "<group>";
+		};
+		A01C72F41FBCBA8600D921C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A01C72F01FBCBA5100D921C5 /* ParadasTableViewController.swift */,
+				A0234CF61FBB54BE00CE7A94 /* LineasTableViewController.swift */,
+				A01C72F21FBCBA7D00D921C5 /* ParadaTableViewCell.swift */,
+				A0AE19781FBB4BD700F6C77E /* LineasTableViewCell.swift */,
+				A01C72F51FBCCAB100D921C5 /* EstimacionTableViewCell.swift */,
+				A01C72F71FBCCAC400D921C5 /* EstimacionesTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A0AE193C1FBB466800F6C77E = {
 			isa = PBXGroup;
 			children = (
@@ -113,17 +141,14 @@
 		A0AE19471FBB466800F6C77E /* Tus Santander */ = {
 			isa = PBXGroup;
 			children = (
-				A0FCE5371FBC36750026F3A7 /* FMDB */,
+				A01C72F41FBCBA8600D921C5 /* View */,
+				A01C72EF1FBC9EB700D921C5 /* pojos */,
 				A0BDA1501FBB888F00B49DA9 /* DatabaseHelper.swift */,
 				A0AE19481FBB466800F6C77E /* AppDelegate.swift */,
 				A0AE194C1FBB466800F6C77E /* Main.storyboard */,
-				A0234CF61FBB54BE00CE7A94 /* LineasTableViewController.swift */,
-				A0AE19781FBB4BD700F6C77E /* LineasTableViewCell.swift */,
 				A0AE194F1FBB466800F6C77E /* Assets.xcassets */,
 				A0AE19511FBB466900F6C77E /* LaunchScreen.storyboard */,
 				A0AE19541FBB466900F6C77E /* Info.plist */,
-				A064AC381FBB51F100380D5A /* Linea.swift */,
-				A0FCE53A1FBC3BA90026F3A7 /* Tus Santander-Bridging-Header.h */,
 			);
 			path = "Tus Santander";
 			sourceTree = "<group>";
@@ -263,7 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0AE19531FBB466900F6C77E /* LaunchScreen.storyboard in Resources */,
-				A0FCE5381FBC36760026F3A7 /* FMDB in Resources */,
 				A0AE19501FBB466800F6C77E /* Assets.xcassets in Resources */,
 				A0AE194E1FBB466800F6C77E /* Main.storyboard in Resources */,
 			);
@@ -290,9 +314,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A01C72F31FBCBA7D00D921C5 /* ParadaTableViewCell.swift in Sources */,
+				A01C72F81FBCCAC400D921C5 /* EstimacionesTableViewController.swift in Sources */,
+				A01C72F11FBCBA5100D921C5 /* ParadasTableViewController.swift in Sources */,
+				A01C72EE1FBC9EAB00D921C5 /* Parada.swift in Sources */,
 				A0234CF71FBB54BE00CE7A94 /* LineasTableViewController.swift in Sources */,
+				A01C72FA1FBCCC6F00D921C5 /* Estimacion.swift in Sources */,
 				A0BDA1511FBB888F00B49DA9 /* DatabaseHelper.swift in Sources */,
 				A064AC391FBB51F100380D5A /* Linea.swift in Sources */,
+				A01C72F61FBCCAB100D921C5 /* EstimacionTableViewCell.swift in Sources */,
 				A0AE19491FBB466800F6C77E /* AppDelegate.swift in Sources */,
 				A0AE19791FBB4BD700F6C77E /* LineasTableViewCell.swift in Sources */,
 			);
@@ -463,6 +493,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VT83P5GLWR;
 				INFOPLIST_FILE = "Tus Santander/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "LuisMartin.Tus-Santander";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -479,6 +510,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VT83P5GLWR;
 				INFOPLIST_FILE = "Tus Santander/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "LuisMartin.Tus-Santander";
 				PRODUCT_NAME = "$(TARGET_NAME)";

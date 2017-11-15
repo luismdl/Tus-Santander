@@ -44,7 +44,7 @@
                                 <connections>
                                     <outlet property="nombreLabel" destination="dm9-Wa-XLh" id="gWl-uc-njz"/>
                                     <outlet property="numeroLabel" destination="aun-jh-xeV" id="QIv-CI-62L"/>
-                                    <segue destination="iWi-Jm-8sO" kind="show" trigger="accessoryAction" id="bfc-BQ-Rbr"/>
+                                    <segue destination="iWi-Jm-8sO" kind="show" identifier="muestraParadas" id="4Vo-L8-eCl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,16 +64,16 @@
             </objects>
             <point key="canvasLocation" x="177" y="-203"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Paradas-->
         <scene sceneID="q09-pa-LpT">
             <objects>
-                <tableViewController id="iWi-Jm-8sO" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2rB-pv-P74">
+                <tableViewController id="iWi-Jm-8sO" customClass="ParadasTableViewController" customModule="Tus_Santander" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2rB-pv-P74">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LineasTableViewCell" rowHeight="90" id="CN9-vy-9bt" customClass="LineasTableViewCell" customModule="Tus_Santander" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ParadaTableViewCell" rowHeight="90" id="CN9-vy-9bt" customClass="ParadaTableViewCell" customModule="Tus_Santander" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CN9-vy-9bt" id="M8F-M1-OAG">
@@ -97,8 +97,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="nombreLabel" destination="N9i-oL-JGW" id="I9P-Dq-sL3"/>
-                                    <outlet property="numeroLabel" destination="BRI-pK-0hP" id="vcm-ck-2y1"/>
+                                    <outlet property="nombre" destination="N9i-oL-JGW" id="7BK-t1-FLw"/>
+                                    <outlet property="numero" destination="BRI-pK-0hP" id="Uyr-Km-MXv"/>
+                                    <segue destination="kCd-gQ-sHK" kind="show" identifier="estimame" id="rXa-bP-28K"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -107,10 +108,74 @@
                             <outlet property="delegate" destination="iWi-Jm-8sO" id="sKj-nr-bCg"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Paradas" id="Q9i-7v-4iT"/>
+                    <connections>
+                        <outlet property="paradasT" destination="2rB-pv-P74" id="gQW-67-qPi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQU-Fc-dTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1193" y="-182"/>
+            <point key="canvasLocation" x="1207" y="-203"/>
+        </scene>
+        <!--Estimaciones-->
+        <scene sceneID="RZO-ty-lpE">
+            <objects>
+                <tableViewController id="kCd-gQ-sHK" customClass="EstimacionesTableViewController" customModule="Tus_Santander" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uQ8-Xz-tlc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EstimacionTableViewCell" rowHeight="90" id="aCB-BT-gyD" customClass="EstimacionTableViewCell" customModule="Tus_Santander" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aCB-BT-gyD" id="ea3-Ha-rPh">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Linea" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yad-kO-Bkr">
+                                            <rect key="frame" x="16" y="0.0" width="152" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bus 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vk-Lg-jks">
+                                            <rect key="frame" x="16" y="32" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bus 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEf-yc-DnM">
+                                            <rect key="frame" x="16" y="58" width="343" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bus1" destination="9vk-Lg-jks" id="Zt5-29-4Qb"/>
+                                    <outlet property="bus2" destination="mEf-yc-DnM" id="7bE-yV-FhK"/>
+                                    <outlet property="linea" destination="Yad-kO-Bkr" id="FXh-Ht-Be4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kCd-gQ-sHK" id="2f7-Jt-3Ql"/>
+                            <outlet property="delegate" destination="kCd-gQ-sHK" id="koy-Dz-J6t"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Estimaciones" id="EY3-dk-WUu"/>
+                    <connections>
+                        <outlet property="estimaciones" destination="uQ8-Xz-tlc" id="Ocp-Le-OqZ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6QM-PC-vJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2376.8000000000002" y="-204.64767616191907"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a9g-vL-fv4">
