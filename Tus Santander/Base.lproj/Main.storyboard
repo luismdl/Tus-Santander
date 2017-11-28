@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jCs-ny-Wx8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hjf-Ar-v08">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -54,6 +54,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Líneas" id="olr-c6-qzl">
+                        <barButtonItem key="leftBarButtonItem" title="Fav" id="3x9-3q-oAG">
+                            <connections>
+                                <segue destination="iWi-Jm-8sO" kind="show" identifier="muestraFav" id="lDP-t3-cCp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QXV-3a-MRA"/>
                     </navigationItem>
                     <connections>
@@ -62,7 +67,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9nT-De-KHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="177" y="-203"/>
+            <point key="canvasLocation" x="855.20000000000005" y="-203.74812593703149"/>
         </scene>
         <!--Paradas-->
         <scene sceneID="q09-pa-LpT">
@@ -81,7 +86,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9i-oL-JGW">
-                                            <rect key="frame" x="16" y="47" width="343" height="32"/>
+                                            <rect key="frame" x="16" y="47" width="287" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -94,9 +99,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frV-kg-MTJ">
+                                            <rect key="frame" x="311" y="19" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button" image="Vacio"/>
+                                            <connections>
+                                                <action selector="likeTapWithSender:" destination="CN9-vy-9bt" eventType="touchUpInside" id="pmy-Nn-je1"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favo" destination="frV-kg-MTJ" id="FeQ-SV-mSY"/>
                                     <outlet property="nombre" destination="N9i-oL-JGW" id="7BK-t1-FLw"/>
                                     <outlet property="numero" destination="BRI-pK-0hP" id="Uyr-Km-MXv"/>
                                     <segue destination="kCd-gQ-sHK" kind="show" identifier="estimame" id="rXa-bP-28K"/>
@@ -110,12 +124,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Paradas" id="Q9i-7v-4iT"/>
                     <connections>
+                        <outlet property="ParadasT" destination="2rB-pv-P74" id="0I4-tl-zzq"/>
                         <outlet property="paradasT" destination="2rB-pv-P74" id="gQW-67-qPi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQU-Fc-dTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207" y="-203"/>
+            <point key="canvasLocation" x="1884" y="-203.74812593703149"/>
         </scene>
         <!--Estimaciones-->
         <scene sceneID="RZO-ty-lpE">
@@ -175,25 +190,33 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6QM-PC-vJN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376.8000000000002" y="-204.64767616191907"/>
+            <point key="canvasLocation" x="3055.1999999999998" y="-204.64767616191907"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="a9g-vL-fv4">
+        <!--Item-->
+        <scene sceneID="BBI-wT-97i">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jCs-ny-Wx8" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hjf-Ar-v08" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="b3d-vj-DLi"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qrE-u0-kX0">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n81-Fd-7ZI">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="AYC-PX-nyr" kind="relationship" relationship="rootViewController" id="zUA-YH-WxG"/>
+                        <segue destination="AYC-PX-nyr" kind="relationship" relationship="rootViewController" id="SDm-Xq-Pav"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HQw-kM-ahd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HJw-4I-8uf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="-202"/>
+            <point key="canvasLocation" x="-26" y="-204"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Vacio" width="255" height="256"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lDP-t3-cCp"/>
+    </inferredMetricsTieBreakers>
 </document>

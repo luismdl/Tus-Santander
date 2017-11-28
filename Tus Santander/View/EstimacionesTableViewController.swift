@@ -13,11 +13,20 @@ class EstimacionesTableViewController: UITableViewController {
     let URL_ESTIMACIONES = "http://datos.santander.es/api/rest/datasets/control_flotas_estimaciones.json?items=2000"
     
     @IBOutlet var estimaciones: UITableView!
-    var para = Parada(num: "", nom: "")
+    var activity:UIActivityIndicatorView = UIActivityIndicatorView()
+    var para = Parada(num: "", nom: "",fav:  false)
     var estima = [Estimacion]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        activity.center = self.tableView.center
+        activity.hidesWhenStopped = true
+        activity.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        activity.color=UIColor.black
+        
+        tableView.addSubview(activity)
+        
+        activity.startAnimating()
         getJsonEstimacion()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -62,8 +71,11 @@ class EstimacionesTableViewController: UITableViewController {
     func getJsonEstimacion(){
         
         //creating a NSURL
+        self.estima = [Estimacion]()
         let url = URL(string: URL_ESTIMACIONES)
         URLSession.shared.dataTask(with: (url)!, completionHandler: {(data, response, error) -> Void in
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             
             if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
                 
@@ -78,21 +90,28 @@ class EstimacionesTableViewController: UITableViewController {
                             guard let t1 = estimaDict.value(forKey: "ayto:tiempo1")as? String,
                                 let t2 = estimaDict.value(forKey: "ayto:tiempo2")as? String,
                                 let parada = estimaDict.value(forKey: "ayto:paradaId")as? String,
+                                let date = estimaDict.value(forKey: "dc:modified") as? String,
                                 let linea = estimaDict.value(forKey: "ayto:etiqLinea")as? String
                                 else{
                                     fatalError("puta mierda")
                             }
-                            if(self.para.numero==parada){
-                                
-                                var t1i = (t1 as NSString).intValue
-                                t1i = t1i/60
-                                var t2i = (t2 as NSString).intValue
-                                t2i = t2i/60
-                                if(t2i != 0){
-                                    let e = Estimacion(lin: linea, b1: Int(t1i), b2: Int(t2i))
-                                    self.estima += [e]
+                            let dat = dateFormatter.date(from: date)!
+                            let now = Date()
+                            let calendar = Calendar.current
+                            if(calendar.component(.day, from: dat)-calendar.component(.day, from: now)<1 &&
+                                calendar.component(.hour, from: dat)-calendar.component(.hour, from: now)<1){
+                                if(self.para.numero==parada){
+                                    
+                                    var t1i = (t1 as NSString).intValue
+                                    t1i = t1i/60
+                                    var t2i = (t2 as NSString).intValue
+                                    t2i = t2i/60
+                                    if(t2i != 0){
+                                        let e = Estimacion(lin: linea, b1: Int(t1i), b2: Int(t2i))
+                                        self.estima += [e]
+                                    }
+                                    
                                 }
-                                
                             }
                         }
                     }
@@ -100,6 +119,7 @@ class EstimacionesTableViewController: UITableViewController {
             }
             DispatchQueue.main.async{
                 self.estima.sort()
+                self.activity.stopAnimating()
                 self.tableView.reloadData()
             }
         }).resume()

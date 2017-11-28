@@ -12,15 +12,14 @@ import os.log
 class ParadasTableViewController: UITableViewController {
 
     
-    @IBOutlet var paradasT: UITableView!
-    
+    @IBOutlet var ParadasT: UITableView!
     var paradas = [Parada]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if(paradas.count>0){
-            tableView.reloadData()
+            ParadasT.reloadData()
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,9 +46,7 @@ class ParadasTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ParadaTableViewCell"
-        
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ParadaTableViewCell
+        guard let cell = ParadasT.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ParadaTableViewCell
             else{
                 fatalError("puta mierda")
         }
@@ -57,7 +54,13 @@ class ParadasTableViewController: UITableViewController {
         
         cell.numero.text = parada.numero
         cell.nombre.text = parada.nombre
+        if(parada.favorito){
+            cell.favo.setImage(UIImage(named: "Rellena"), for: .normal)
+        }else{
+            cell.favo.setImage(UIImage(named: "Vacio"), for: .normal)
+        }
         
+        cell.parada = parada
         return cell
     }
  
@@ -125,6 +128,7 @@ class ParadasTableViewController: UITableViewController {
             fatalError("Unexpected Segue Identifier;")
         }
     }
+    
     
 
 }

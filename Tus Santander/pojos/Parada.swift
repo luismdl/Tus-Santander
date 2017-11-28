@@ -14,9 +14,11 @@ class Parada: NSObject, Comparable, NSCoding {
     //MARK: Properties
     var numero: String
     var nombre: String
+    var favorito: Bool
     struct PropertyKey {
         static let numero = "number"
         static let nombre = "nombre"
+        static let fav = "favoritos"
     }
     //MARK: Archiving Paths
     
@@ -24,9 +26,10 @@ class Parada: NSObject, Comparable, NSCoding {
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("paradas")
     
     
-    init(num:String, nom:String) {
+    init(num:String, nom:String, fav:Bool) {
         self.numero = num
         self.nombre = nom
+        self.favorito = fav
     }
     
     
@@ -43,16 +46,18 @@ class Parada: NSObject, Comparable, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(numero, forKey: PropertyKey.numero)
         aCoder.encode(nombre, forKey: PropertyKey.nombre)
+        aCoder.encode(favorito, forKey: PropertyKey.fav)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         guard let numero = aDecoder.decodeObject(forKey: PropertyKey.numero) as? String,
-            let nombre = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? String else {
-                os_log("Unable to decode the name for a Meal object.", log: OSLog.default, type: .debug)
+            let nombre = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? String,
+            let fav = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? Bool else {
+                os_log("Unable to decode the name for a paradas object.", log: OSLog.default, type: .debug)
                 return nil
         }
         
-        self.init(num: numero, nom: nombre)
+        self.init(num: numero, nom: nombre, fav: fav)
         
     }
 }

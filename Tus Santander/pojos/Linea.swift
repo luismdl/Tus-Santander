@@ -57,7 +57,7 @@ class Linea: NSObject, Comparable, NSCoding {
         guard let numero = aDecoder.decodeObject(forKey: PropertyKey.numero) as? String,
             let nombre = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? String,
             let id = aDecoder.decodeObject(forKey: PropertyKey.identificador) as? String else {
-                os_log("Unable to decode the name for a Meal object.", log: OSLog.default, type: .debug)
+                os_log("Unable to decode the name for a linea object.", log: OSLog.default, type: .debug)
                 return nil
         }
         

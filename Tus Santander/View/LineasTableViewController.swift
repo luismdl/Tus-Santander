@@ -9,7 +9,7 @@
 import UIKit
 import os.log
 
-class LineasTableViewController: UITableViewController {
+class LineasTableViewController: UITableViewController, UITabBarControllerDelegate{
     
     //MARK: Properties
     
@@ -19,7 +19,7 @@ class LineasTableViewController: UITableViewController {
     let URL_PARADASLINEAS = "http://datos.santander.es/api/rest/datasets/lineas_bus_paradas.json?items=3000"
     
     var lineas = [Linea]()
-    var paradas = [Parada]()
+    static var paradas = [Parada]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class LineasTableViewController: UITableViewController {
             lineas += guardado
             os_log("lineas cargadas de data.", log: OSLog.default, type: .debug)
             if let guarda2 = loadParadas() {
-                paradas += guarda2
+                LineasTableViewController.paradas += guarda2
                 os_log("paradas cargadas de data.", log: OSLog.default, type: .debug)
             }else{
                 getJsonParadasFromUrl()
@@ -38,6 +38,7 @@ class LineasTableViewController: UITableViewController {
             getJsonLineasFromUrl()
         
        }
+        getJsonParadasFromUrl()
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -138,13 +139,13 @@ class LineasTableViewController: UITableViewController {
                                 else{
                                     fatalError("puta mierda")
                             }
-                            self.paradas += [Parada(num: num,nom: nom)]
+                            LineasTableViewController.paradas += [Parada(num: num,nom: nom,fav: false)]
                         }
                     }
                 }
             }
             DispatchQueue.main.async{
-                self.paradas.sort()
+                LineasTableViewController.paradas.sort()
                 self.getJsonParadabyLineaFromUrl()
             }
         }).resume()
@@ -179,7 +180,7 @@ class LineasTableViewController: UITableViewController {
                     }
                 }
                 DispatchQueue.main.async{
-                    self.saveParadas()
+                    LineasTableViewController.saveParadas()
                     self.saveLineas()
                 }
             }).resume()
@@ -198,7 +199,7 @@ class LineasTableViewController: UITableViewController {
         return NSKeyedUnarchiver.unarchiveObject(withFile: Linea.ArchiveURL.path) as? [Linea]
     }
     
-    private func saveParadas() {
+    class func saveParadas() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(paradas, toFile: Parada.ArchiveURL.path)
         if isSuccessfulSave {
             os_log("paradas successfully saved.", log: OSLog.default, type: .debug)
@@ -276,6 +277,15 @@ class LineasTableViewController: UITableViewController {
             let parad=getparadas(l: Slinea)
             paradaController.paradas=parad
             
+        case "muestraFav":
+            
+            guard let paradaController = segue.destination as? ParadasTableViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            let parad=getFavs()
+            paradaController.paradas=parad
+            
         default:
             fatalError("Unexpected Segue Identifier;")
         }
@@ -284,10 +294,23 @@ class LineasTableViewController: UITableViewController {
     
     func getparadas(l: Linea) -> [Parada]{
         var para = [Parada]()
+        if(l.paradas.count==0){
+            return LineasTableViewController.paradas
+        }
         
         l.paradas.forEach { par in
-            if let i = self.paradas.index(where: { $0.numero == par }) {
-                para += [paradas[i]]
+            if let i = LineasTableViewController.paradas.index(where: { $0.numero == par }) {
+                para += [LineasTableViewController.paradas[i]]
+            }
+        }
+        return para
+    }
+    
+    func getFavs() -> [Parada]{
+        var para = [Parada]()
+        LineasTableViewController.paradas.forEach { par in
+            if (par.favorito) {
+                para += [par]
             }
         }
         return para
