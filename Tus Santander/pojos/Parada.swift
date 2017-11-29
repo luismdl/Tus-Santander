@@ -50,13 +50,16 @@ class Parada: NSObject, Comparable, NSCoding {
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let numero = aDecoder.decodeObject(forKey: PropertyKey.numero) as? String,
-            let nombre = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? String,
-            let fav = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? Bool else {
-                os_log("Unable to decode the name for a paradas object.", log: OSLog.default, type: .debug)
+        guard let numero = aDecoder.decodeObject(forKey: PropertyKey.numero) as? String else {
+                os_log("Unable to decode the num for a paradas object.", log: OSLog.default, type: .debug)
                 return nil
         }
-        
+        guard let nombre = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? String else {
+            os_log("Unable to decode the name for a paradas object.", log: OSLog.default, type: .debug)
+            return nil
+        }
+        let fav = aDecoder.decodeBool(forKey: PropertyKey.fav)
+
         self.init(num: numero, nom: nombre, fav: fav)
         
     }

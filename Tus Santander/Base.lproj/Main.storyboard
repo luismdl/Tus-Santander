@@ -59,9 +59,14 @@
                                 <segue destination="iWi-Jm-8sO" kind="show" identifier="muestraFav" id="lDP-t3-cCp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QXV-3a-MRA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QXV-3a-MRA">
+                            <connections>
+                                <action selector="recargarWithSender:" destination="AYC-PX-nyr" id="1eZ-oh-8gW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="recarga" destination="QXV-3a-MRA" id="ffD-7Q-3C8"/>
                         <outlet property="tabla" destination="GbW-lF-JvT" id="pga-PS-XpA"/>
                     </connections>
                 </tableViewController>

@@ -18,12 +18,12 @@ class LineasTableViewController: UITableViewController, UITabBarControllerDelega
     let URL_PARADAS = "http://datos.santander.es/api/rest/datasets/paradas_bus.json?items=500"
     let URL_PARADASLINEAS = "http://datos.santander.es/api/rest/datasets/lineas_bus_paradas.json?items=3000"
     
+    @IBOutlet weak var recarga: UIBarButtonItem!
     var lineas = [Linea]()
     static var paradas = [Parada]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
        if let guardado = loadLineas() {
             lineas += guardado
             os_log("lineas cargadas de data.", log: OSLog.default, type: .debug)
@@ -38,8 +38,6 @@ class LineasTableViewController: UITableViewController, UITabBarControllerDelega
             getJsonLineasFromUrl()
         
        }
-        getJsonParadasFromUrl()
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -316,5 +314,11 @@ class LineasTableViewController: UITableViewController, UITabBarControllerDelega
         return para
     }
     
-
+    @IBAction func recargar(sender:UIBarButtonItem){
+        getJsonLineasFromUrl()
+        lineas = [Linea]()
+        LineasTableViewController.paradas = [Parada]()
+        print("recargado")
+    }
+    
 }
